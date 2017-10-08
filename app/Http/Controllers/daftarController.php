@@ -74,6 +74,12 @@ class daftarController extends Controller
     public function edit($id)
     {
         //
+        $var = daftar::find($id);
+        if(!$var){
+            abort(404);
+        }
+
+        return view('pendaftaran.edit')->with('var', $var);
     }
 
     /**
@@ -86,6 +92,18 @@ class daftarController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+           'tgl' => 'required', 'dok' => 'required', 'pas' => 'required', 'pol' => 'required', 'biaya' => 'required', 'ket' => 'required',
+        ]);
+        $var = daftar::find($id);
+        $var->TanggalPendf = $request->tgl;
+        $var->KodeDkt = $request->dok;
+        $var->KodePsn = $request->pas;
+        $var->KodePlk = $request->pol;
+        $var->Biaya = $request->biaya;
+        $var->Ket = $request->ket;
+        $var->save();
+        return redirect('pendaftaran');
     }
 
     /**
@@ -97,5 +115,8 @@ class daftarController extends Controller
     public function destroy($id)
     {
         //
+        $var = daftar::find($id);
+        $var ->delete();
+        return redirect('pendaftaran');
     }
 }

@@ -73,7 +73,6 @@ class bayarController extends Controller
         //
         //Find primaryKey kalau belum di set di model
         //$var = bayar::where('NomorByr',$id)->firstOrFail();
-
         $var = bayar::find($id);
         if(!$var){
             abort(404);

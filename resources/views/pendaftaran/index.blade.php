@@ -24,6 +24,7 @@ table, td, th {
         <th>Kode Poliklinik</th>
         <th>Biaya Pendaftaran</th>
         <th>Keterangan</th>
+        <th>Action</th>
     </tr>
     @foreach($var as $var)
         <tr>
@@ -34,6 +35,14 @@ table, td, th {
             <td>{{ $var->KodePlk}}</td>
             <td>{{ $var->Biaya}}</td>
             <td>{{ $var->Ket}}</td>
+            <td>
+                <a href="/pendaftaran/{{$var->NomorPendf}}/edit"> Edit</a>
+                <form action="/pendaftaran/{{$var->NomorPendf}}" method="post">
+                    <input type="hidden" value="{{ csrf_token() }}" name="_token">
+                    <input type="hidden" value="delete" name="_method">
+                    <input type="submit" value="delete">
+                </form>
+            </td>
         </tr>
     @endforeach
 </table>
