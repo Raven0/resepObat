@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 Route::resource('poli', 'poliController');
 Route::resource('dokter', 'dokterController');
