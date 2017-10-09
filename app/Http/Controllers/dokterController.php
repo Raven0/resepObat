@@ -18,10 +18,14 @@ class dokterController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $dokter = dokter::all();
-        return view('dokter.index',['dokter' => $dokter]);
+        // $dokter = dokter::all();
+        // return view('dokter.index',['dokter' => $dokter]);
+
+        $query = $request->get('search');
+        $dokter = dokter::where('KodeDkt', 'LIKE', '%' . $query . '%')->orWhere('Namadkt', 'LIKE', '%' . $query . '%')->paginate(10);
+        return view('dokter.index', compact('dokter', 'query'));
     }
 
     /**

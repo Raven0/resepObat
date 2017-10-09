@@ -1,28 +1,28 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+@section('panelhead')
+Dashboard
+@endsection
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <a href="pendaftaran">Menu Pendaftaran</a>
-                    <br>
-                    <a href="pembayaran">Menu Pembayaran</a>
-                    <br>
-                    <a href="dokter">Menu Dokter</a>
-                    <br>
-                    <a href="poli">Menu Poliklinik</a>
-                </div>
-            </div>
-        </div>
+@section('create')
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
     </div>
-</div>
+@endif
+<a href="pendaftaran">Menu Pendaftaran</a>
+<br>
+<a href="pembayaran">Menu Pembayaran</a>
+<br>
+<a href="dokter">Menu Dokter</a>
+<br>
+<a href="poli">Menu Poliklinik</a>
+<br>
+<a href="obat">Menu Obat</a>
+<br>
+<a href="detail">Menu Detail</a>
+<br>
+<a href="poli">Menu #1</a>
+<br>
+<a href="poli">Menu #2</a>
 @endsection

@@ -13,11 +13,15 @@ class DetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //$detail = Detail::all();
-        $detail=DB::table('detail')->paginate(10);
-        return view('detail.index', ['detail' => $detail]);
+        // $detail=DB::table('detail')->paginate(10);
+        // return view('detail.index', ['detail' => $detail]);
+
+        $query = $request->get('search');
+        $detail = Detail::where('NomorResep', 'LIKE', '%' . $query . '%')->orWhere('KodeObat', 'LIKE', '%' . $query . '%')->paginate(10);
+        return view('detail.index', compact('detail', 'query'));
     }
 
     /**
@@ -38,7 +42,7 @@ class DetailController extends Controller
      */
     public function store(Request $request)
     {
-    
+
     $this->validate($request, [
         'NomorResep' => 'required',
         'KodeObat' => 'required',
@@ -84,7 +88,7 @@ class DetailController extends Controller
         if(!$var){
             abort(404);
         }
-        
+
         return view('detail.edit')->with('var', $var);
 
     }
@@ -101,7 +105,7 @@ class DetailController extends Controller
         $this->validate($request, [
            'NomorResep'=>'required','KodeObat'=>'required','Harga'=>'required','Dosis'=>'required','SubTotal'=>'required'
         ]);
-        
+
         $var= Detail::find($id);
          $var->NomorResep=$request->NomorResep;
          $var->KodeObat=$request->KodeObat;

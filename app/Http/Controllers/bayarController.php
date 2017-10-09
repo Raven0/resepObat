@@ -18,11 +18,15 @@ class bayarController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $vars = bayar::all();
-        return view('pembayaran.index',['var' => $vars]);
+        // //
+        // $vars = bayar::all();
+        // return view('pembayaran.index',['var' => $vars]);
+
+        $query = $request->get('search');
+        $var = bayar::where('NomorByr', 'LIKE', '%' . $query . '%')->orWhere('KodePsn', 'LIKE', '%' . $query . '%')->paginate(10);
+        return view('pembayaran.index', compact('var', 'query'));
     }
 
     /**

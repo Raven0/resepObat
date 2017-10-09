@@ -1,5 +1,9 @@
 	<center>
 <a href="/detail/create">Create</a>
+<form class="form-inline mt-2 mt-md-0" method="get" action="/detail">
+	<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search">
+	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
 <h1>Halaman Detail</h1>
 @foreach($detail as $details)
 
@@ -31,13 +35,13 @@
 		</td>
 	</tr>
 	</table>
-	
 
-	
+
+
 
 	<hr>
 
 @endforeach
 {!!$detail->links()!!}
-	
+
 	</center>

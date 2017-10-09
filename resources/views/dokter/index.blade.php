@@ -3,6 +3,10 @@
 <h1> VIEW </h1>
 <a href="dokter/create"> CREATE </a>
 
+<form class="form-inline mt-2 mt-md-0" method="get" action="/dokter">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
 
 @foreach($dokter as $dokter)
     <p> {{ $dokter->KodeDkt}} </p>
@@ -21,6 +25,6 @@
     </form>
     <a href="/dokter/{{$dokter->KodeDkt}}/edit"> EDIT</a>
 
-   
+
     <hr>
 @endforeach

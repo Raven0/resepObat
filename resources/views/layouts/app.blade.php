@@ -72,6 +72,40 @@
         </nav>
 
         @yield('content')
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            @yield('panelhead')
+                        </div>
+
+                        <div class="panel-body">
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+
+                            @yield('create')
+                            @yield('search')
+
+                            <!-- TABLE MULAI DISINI -->
+                            <table class="table table-hover table-condensed">
+                                <thead>
+                                    <tr>
+                                        @yield('thead')
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @yield('tbody')
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->

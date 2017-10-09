@@ -13,13 +13,17 @@ class ObatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-    
+
         //$obat=Obat::all();
-        $obat=DB::table('obat')->paginate(1);
-        return view('obat.index', ['obat' => $obat]);
-    
+        // $obat=DB::table('obat')->paginate(1);
+        // return view('obat.index', ['obat' => $obat]);
+
+        $query = $request->get('search');
+        $obat = Obat::where('KodeObat', 'LIKE', '%' . $query . '%')->orWhere('NamaObat', 'LIKE', '%' . $query . '%')->paginate(10);
+        return view('obat.index', compact('obat', 'query'));
+
     }
 
     /**
@@ -49,7 +53,7 @@ class ObatController extends Controller
     ]);
 
         $obat= new Obat;
-        
+
         $obat->NamaObat = $request->NamaObat;
         $obat->JenisObat = $request->JenisObat;
         $obat->Kategori = $request->Kategori;
@@ -83,7 +87,7 @@ class ObatController extends Controller
         if(!$var){
             abort(404);
         }
-        
+
         return view('obat.edit')->with('var', $var);
 
     }
@@ -100,7 +104,7 @@ class ObatController extends Controller
         $this->validate($request, [
            'KodeObat'=>'required','NamaObat'=>'required','JenisObat'=>'required','Kategori'=>'required','HargaObat'=>'required','JumlahObat'=>'required'
         ]);
-        
+
         $var= Obat::find($id);
          $var->KodeObat=$request->KodeObat;
          $var->NamaObat=$request->NamaObat;

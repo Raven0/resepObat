@@ -23,6 +23,10 @@
                             Create
                         </button>
                     </a>
+                    <form class="form-inline mt-2 mt-md-0" method="get" action="/pembayaran">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
 
                     <!-- TABLE MULAI DISINI -->
                     <table class="table table-hover table-condensed">

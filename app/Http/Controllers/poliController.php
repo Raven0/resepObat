@@ -18,11 +18,12 @@ class poliController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         //
-        $vars = Poliklinik::all();
-         return view('poliklinik.index',['var' => $vars]);
+         $query = $request->get('search');
+         $var = Poliklinik::where('KodePlk', 'LIKE', '%' . $query . '%')->orWhere('NamaPlk', 'LIKE', '%' . $query . '%')->paginate(10);
+         return view('poliklinik.index', compact('var', 'query'));
     }
 
     /**

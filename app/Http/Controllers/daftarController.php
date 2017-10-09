@@ -18,11 +18,12 @@ class daftarController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         //
-        $vars = daftar::all();
-        return view('pendaftaran.index',['var' => $vars]);
+        $query = $request->get('search');
+        $var = daftar::where('NomorPendf', 'LIKE', '%' . $query . '%')->orWhere('KodeDkt', 'LIKE', '%' . $query . '%')->paginate(10);
+        return view('pendaftaran.index', compact('var', 'query'));
     }
 
     /**
