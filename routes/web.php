@@ -17,3 +17,13 @@ Route::get('/', function () {
 
 Route::resource('pasien', 'pasienController');
 Route::resource('resep', 'resepController');
+Route::resource('detail', 'DetailController');
+Route::resource('obat', 'ObatController');
+Route::resource('poli', 'poliController');
+Route::resource('dokter', 'dokterController');
+Route::resource('pembayaran', 'bayarController');
+Route::resource('pendaftaran', 'daftarController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
