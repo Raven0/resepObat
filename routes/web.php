@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['middleware' => ['web']], function () {
+    Route::resource('detail', 'DetailController');
+    Route::resource('obat', 'ObatController');
+
+});
+
+// sok mulai ngoding,  tiap beres atau rek istirahat commit
+//carana buka git desktop
+//ke we lah di push mah, urg poho carana nambahkeun contributor
+//beres nya
