@@ -18,3 +18,7 @@ Route::resource('poli', 'poliController');
 Route::resource('dokter', 'dokterController');
 Route::resource('pembayaran', 'bayarController');
 Route::resource('pendaftaran', 'daftarController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
