@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('detail', 'DetailController');
+Route::resource('obat', 'ObatController');
 Route::resource('poli', 'poliController');
 Route::resource('dokter', 'dokterController');
 Route::resource('pembayaran', 'bayarController');
