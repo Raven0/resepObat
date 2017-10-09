@@ -13,8 +13,13 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <a href="pendaftaran">Menu Pendaftaran</a>
+                    <br>
+                    <a href="pembayaran">Menu Pembayaran</a>
+                    <br>
+                    <a href="dokter">Menu Dokter</a>
+                    <br>
+                    <a href="poli">Menu Poliklinik</a>
                 </div>
             </div>
         </div>
