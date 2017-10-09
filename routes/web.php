@@ -14,5 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::resource('dokter', 'dokterController');
+Route::resource('pembayaran', 'bayarController');
+Route::resource('pendaftaran', 'daftarController');
