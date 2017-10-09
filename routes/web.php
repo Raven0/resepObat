@@ -15,13 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => ['web']], function () {
-    Route::resource('detail', 'DetailController');
-    Route::resource('obat', 'ObatController');
+Route::resource('detail', 'DetailController');
+Route::resource('obat', 'ObatController');
+Route::resource('poli', 'poliController');
+Route::resource('dokter', 'dokterController');
+Route::resource('pembayaran', 'bayarController');
+Route::resource('pendaftaran', 'daftarController');
 
-});
+Auth::routes();
 
-// sok mulai ngoding,  tiap beres atau rek istirahat commit
-//carana buka git desktop
-//ke we lah di push mah, urg poho carana nambahkeun contributor
-//beres nya
+Route::get('/home', 'HomeController@index')->name('home');
