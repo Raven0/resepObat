@@ -7,10 +7,24 @@
         @endforeach
     </ul>
 @endif
-<h1> EDIT </h1>
+@extends('layouts.app')
+
+@section('panelhead')
+Input Detail
+@endsection
+
+@section('create')
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
 <form action="/poli/{{$var->KodePlk}}" method="post">
     <input type="text" name="NamaPlk" value="{{$var->NamaPlk}}"><br>
-    <input type="submit" value="edit">
+    <button class="btn btn-success">
+        Edit
+    </button>
     <input type="hidden" value="{{ csrf_token() }}" name="_token">
     <input type="hidden" value="put" name="_method">
 </form>
+@endsection

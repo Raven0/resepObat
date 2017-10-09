@@ -15,6 +15,8 @@ Pendaftaran
         Create
     </button>
 </a>
+<br><br>
+
 @endsection
 
 @section('search')

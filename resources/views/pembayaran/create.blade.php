@@ -7,12 +7,25 @@
         @endforeach
     </ul>
 @endif
-<h1>create</h1>
+@extends('layouts.app')
 
+@section('panelhead')
+Input Detail
+@endsection
+
+@section('create')
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
 <form action="/pembayaran" method="post">
     <input type="text" name="pas" value="" placeholder="Kode Pasien"><br>
     <input type="date" name="tgl" value="" placeholder="Tanggal Bayar"><br>
     <input type="number" name="bay" value="" placeholder="Jumlah Bayar"><br>
-    <input type="submit" value="post">
+    <button class="btn btn-success">
+        Create
+    </button>
     <input type="hidden" value="{{ csrf_token() }}" name="_token">
 </form>
+@endsection

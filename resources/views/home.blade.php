@@ -22,7 +22,7 @@ Dashboard
 <br>
 <a href="detail">Menu Detail</a>
 <br>
-<a href="poli">Menu #1</a>
+<a href="pasien">Menu Pasien</a>
 <br>
-<a href="poli">Menu #2</a>
+<a href="resep">Menu Resep</a>
 @endsection

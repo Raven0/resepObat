@@ -12,11 +12,18 @@ class pasienController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
+     
+    public function index(Request $request)
     {
         //
-        $vars = pasien::all();
-         return view('pasien.index',['var' => $vars]);
+        $query = $request->get('search');
+        $var = pasien::where('KodePsn', 'LIKE', '%' . $query . '%')->orWhere('NamaPsn', 'LIKE', '%' . $query . '%')->paginate(10);
+        return view('pasien.index', compact('var', 'query'));
     }
 
     /**
@@ -66,7 +73,7 @@ class pasienController extends Controller
         }
 
         return view('pasien.single')->with('var', $var);
-        
+
     }
 
     /**
@@ -82,7 +89,7 @@ class pasienController extends Controller
         if(!$var){
             abort(404);
         }
-        
+
         return view('pasien.edit')->with('var', $var);
     }
 

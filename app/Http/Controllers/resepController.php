@@ -13,11 +13,18 @@ class resepController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
+     
+    public function index(Request $request)
     {
         //
-        $vars = resep::all();
-         return view('resep.index',['var' => $vars]);
+        $query = $request->get('search');
+        $var = resep::where('NomorResep', 'LIKE', '%' . $query . '%')->orWhere('KodeDkt', 'LIKE', '%' . $query . '%')->paginate(10);
+        return view('resep.index', compact('var', 'query'));
     }
 
     /**
@@ -84,7 +91,7 @@ class resepController extends Controller
         if(!$var){
             abort(404);
         }
-        
+
         return view('resep.edit')->with('var', $var);
     }
 
