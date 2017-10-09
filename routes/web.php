@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('pasien', 'pasienController');
+Route::resource('resep', 'resepController');
 Route::resource('detail', 'DetailController');
 Route::resource('obat', 'ObatController');
 Route::resource('poli', 'poliController');
